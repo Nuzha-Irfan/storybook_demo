@@ -1,11 +1,12 @@
 import Button from "./Button2";
-
+import { Center  } from "../Center/Center";
 export default {
  title: "Components/Controls/Button",
  component: Button,
  argTypes: {
    handleClick: { action: alert("click action") },
- }
+ },
+ 
 };
 
 const Template = (args) => <Button {...args} />;
@@ -17,7 +18,8 @@ Green.args = {
  label: "Middle Green button",
  size: "md",
  color: "black",
- padding : 3
+ padding : 3,
+
 
 }
 export const Pink = Template.bind({});

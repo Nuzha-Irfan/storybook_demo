@@ -8,7 +8,9 @@ const config = {
     "@storybook/addon-interactions",
     "@storybook/addon-actions",
     "@storybook/addon-knobs",
-    "@storybook/addon-docs"
+    "@storybook/addon-docs",
+    "@storybook/addon-paddings"
+
   
   ],
   framework: {
