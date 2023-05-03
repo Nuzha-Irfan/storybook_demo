@@ -8,7 +8,13 @@ export default {
  size: {
     control: {
       type: 'select',
-      options: ["sm", "md", "lg", "xl", "xxl"],
+      options: ["sm", "md", "lg", "xl", "2xl"],
+    },
+  },
+  alignItems: {
+    control: {
+      type: 'select',
+      options: ["center","left","right","justify"],
     },
   },
   icon: {
@@ -45,9 +51,9 @@ export default {
 
 const Template = (args) => <Button {...args} />;
 
-export const Primary = Template.bind({});
+export const main = Template.bind({});
 
-Primary.args = {
+main.args = {
  backgroundColor:"#7F56D9",
  label: "Button CTA",
  size:"sm",
@@ -61,4 +67,5 @@ Primary.args = {
  focusColor:"#F4EBFF"
 
 }
+
 

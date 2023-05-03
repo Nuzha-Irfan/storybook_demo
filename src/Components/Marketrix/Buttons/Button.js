@@ -17,24 +17,32 @@ import {
 } from '@fortawesome/free-regular-svg-icons' ;
 import { faCircle as fasCircle}from "@fortawesome/free-solid-svg-icons";
 
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { far } from '@fortawesome/free-regular-svg-icons';
 
+library.add(fas, far);
 
 function Button({
  label,
  fontSize,
  lineHeight,
+ type="Primary",
  backgroundColor,
  border,
  borderColor,
- icon,iconMargin,
+ icon,
+ iconMargin,
  direction = "row",
  color = "white",
  size="sm",
  handleClick,
  disabled = false,
  disabledColor = "#E9D7FE",
+ gap,
  paddingLeft, paddingRight, paddingBottom, paddingTop,
  hoverColor,focusColor,
+ alignItems,
  iconPosition = "leading",
 }) {
   
@@ -54,8 +62,49 @@ function Button({
       "circle-Dot": fasCircle,
     };
 
+
+   
+
   const [isHovered, setIsHovered] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
+
+
+    if (type==="Primary"){
+      borderColor=" #7F56D9";
+      hoverColor="#6941C6";
+      color= "white";
+      disabledColor="#E9D7FE";
+      backgroundColor="#7F56D9";
+    }
+    else if(type === "Secondary") {
+      borderColor="#F9F5FF";
+      hoverColor="#F4EBFF";
+      disabledColor="#FCFAFF";
+      backgroundColor="#F9F5FF";
+      color= "#6941C6"
+    }
+    else if(type === "Secondary Gray") {
+      borderColor="#D0D5DD";
+      hoverColor="#F9FAFB";
+      disabledColor="#FCFAFF";
+      backgroundColor="#FFFFFF";
+      color= "#344054"
+      focusColor="#F2F4F7";
+    }
+    else if(type === "Tertiary") {
+      borderColor= "none";
+      border="none";
+      hoverColor="#F9F5FF";
+      disabledColor="none";
+      backgroundColor="none";
+      color= "#6941C6"
+      focusColor="none";
+    }
+  
+  
+
+
+
 
     if (size === "sm") {
       paddingLeft = 14;
@@ -64,6 +113,7 @@ function Button({
       paddingTop = 8;
       fontSize="14px";
       lineHeight="20px";
+     
       
     } else if (size === "md") {
       paddingLeft = 16;
@@ -89,13 +139,14 @@ function Button({
       fontSize="16px";
       lineHeight="24px";
      
-    } else if (size === "xxl") {
+    } else if (size === "2xl") {
       paddingLeft = 28;
       paddingRight = 28;
       paddingBottom = 16;
       paddingTop = 16;
       fontSize="18px";
       lineHeight="28px";
+      gap="12px";
      
     }
     
@@ -107,9 +158,10 @@ function Button({
    paddingLeft,
    paddingTop,
    paddingRight,
+   type,
    paddingBottom,
-   fontSize,
-   lineHeight,
+   fontSize :`${fontSize}px`,
+   lineHeight:`${lineHeight}px`,
    size,
    icon,
    display: "flex",
@@ -143,9 +195,9 @@ function Button({
       disabled={disabled}
    >
 
-      {iconPosition === "leading" && icon && <FontAwesomeIcon icon={iconMap[icon]} iconMargin={8} />}
+      {iconPosition === "leading" &&  icon && <FontAwesomeIcon icon={iconMap[icon]} iconMargin={8} />}
       {label}
-      {iconPosition === "trailing" && icon && <FontAwesomeIcon icon={iconMap[icon]} iconMargin={8} />}
+      {iconPosition === "trailing"  && icon && <FontAwesomeIcon icon={iconMap[icon]} iconMargin={8} />}
    </button>
  );
 }
@@ -155,7 +207,7 @@ Button.propTypes = {
  direction: PropTypes.oneOf(["row", "column"]),
  backgroundColor: PropTypes.string,
  iconPosition:PropTypes.oneOf(["leading","trailing","none"]),
- size:PropTypes.oneOf(["sm","md","lg","xl","xxl","custom"]),
+ size:PropTypes.oneOf(["sm","md","lg","xl","2xl","custom"]),
  color: PropTypes.string,
  paddingRight:PropTypes.number,
  paddingLeft:PropTypes.number,
@@ -170,7 +222,7 @@ Button.propTypes = {
  lineHeight:PropTypes.string,
  disabledColor: PropTypes.string,
  focusColor: PropTypes.string,
- 
+ alignItems:PropTypes.oneOf(["center","left","right","justify"]),
  icon: PropTypes.oneOf([
   "none",
   "circle",
@@ -185,6 +237,7 @@ Button.propTypes = {
   "minus",
   "circle-Dot",
 ]),
+ type:PropTypes.oneOf(["Primary","Secondary","Secondary Gray","Tertiary"])
 };
 
 export default Button;
