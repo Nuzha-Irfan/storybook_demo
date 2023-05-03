@@ -27,18 +27,18 @@ function Button({
  label,
  fontSize,
  lineHeight,
- type="Primary",
+ type,
  backgroundColor,
  border,
  borderColor,
  icon,
  iconMargin,
  direction = "row",
- color = "white",
- size="sm",
+ color,
+ size,
  handleClick,
  disabled = false,
- disabledColor = "#E9D7FE",
+ disabledColor,
  gap,
  paddingLeft, paddingRight, paddingBottom, paddingTop,
  hoverColor,focusColor,
@@ -154,7 +154,7 @@ function Button({
 
 
  const style = {
-   backgroundColor :disabled ? disabledColor : (isHovered ? hoverColor : backgroundColor),
+   backgroundColor :disabled ? disabledColor : isHovered ? hoverColor : backgroundColor,
    paddingLeft,
    paddingTop,
    paddingRight,
@@ -237,7 +237,7 @@ Button.propTypes = {
   "minus",
   "circle-Dot",
 ]),
- type:PropTypes.oneOf(["Primary","Secondary","Secondary Gray","Tertiary"])
+ type:PropTypes.oneOf(["Primary","Secondary","Secondary Gray","Tertiary","custom"])
 };
 
 export default Button;
