@@ -36,6 +36,7 @@ function Button({
  direction = "row",
  color,
  size,
+ 
  handleClick,
  disabled = false,
  disabledColor,
@@ -166,7 +167,8 @@ function Button({
    icon,
    display: "flex",
    flexDirection: direction,
-   alignItems: "center",
+   alignItems,
+  
    justifyContent:
    direction === "row"
      ? iconPosition === "leading"
@@ -181,6 +183,8 @@ function Button({
    cursor: disabled ? "default" : "pointer",
    opacity: disabled ? 0.6 : 1,
    boxShadow: isFocused && !disabled ? ` 0px 0px 0px 4px ${focusColor}` : "none",
+   lineHeight: "1em",
+   textAlign:"center"
  };
 
 
@@ -222,7 +226,8 @@ Button.propTypes = {
  lineHeight:PropTypes.string,
  disabledColor: PropTypes.string,
  focusColor: PropTypes.string,
- alignItems:PropTypes.oneOf(["center","left","right","justify"]),
+//  textAlign:PropTypes.oneOf(["left","right","center","justify"]),
+ alignItems:PropTypes.oneOf(["flex-start","center","flex-end","baseline"]),
  icon: PropTypes.oneOf([
   "none",
   "circle",
